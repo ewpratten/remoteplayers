@@ -1,0 +1,32 @@
+{
+    "schemaVersion": 1,
+    "id": "remoteplayers",
+    "version": "${version}",
+    "name": "Remote Players",
+    "description": "Hooks dynmap into Xaeros Minimap",
+    "authors": [
+        "Xnor50"
+    ],
+    "license": "GPLv3",
+    "environment": "client",
+    "entrypoints": {
+        "main": [
+            "ca.retrylife.mc.remoteplayers.RemotePlayers"
+        ],
+        "cotton-client-commands": [
+            "ca.retrylife.mc.remoteplayers.commands.CommandSetup"
+        ]
+    },
+    "mixins": [],
+    "depends": {
+        "fabricloader": ">=0.8.7",
+        "fabric": ">=0.17.2",
+        "minecraft": [
+            "1.16.2",
+            "1.16.3",
+            "1.16.4"
+        ],
+        "cotton-client-commands": "^1.0.0",
+        "xaerominimap": "*"
+    }
+}
