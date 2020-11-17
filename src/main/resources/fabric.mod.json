@@ -17,16 +17,14 @@
             "ca.retrylife.mc.remoteplayers.commands.CommandSetup"
         ]
     },
-    "mixins": [],
+    "mixins": [
+        "remoteplayers.mixins.json"
+    ],
     "depends": {
         "fabricloader": ">=0.8.7",
         "fabric": ">=0.17.2",
-        "minecraft": [
-            "1.16.2",
-            "1.16.3",
-            "1.16.4"
-        ],
-        "cotton-client-commands": "^1.0.0",
-        "xaerominimap": "*"
+        "minecraft": ">=1.16.2",
+        "cotton-client-commands": ">=0.4.0",
+        "xaerominimap": ">=19.0"
     }
 }

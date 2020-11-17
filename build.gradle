@@ -39,8 +39,12 @@ dependencies {
     // Client-side commands
     modImplementation "io.github.cottonmc:cotton-client-commands:1.0.1+1.16-rc1"
 
-    // Minimap mod
+    // Minimap mods
     modImplementation "curse.maven:xaerominimap:3103772"
+    modImplementation "curse.maven:xaeroworldmap:3103778"
+
+    // JSON
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.13'

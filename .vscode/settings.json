@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
+        "Waypoint",
         "dynmap",
         "minecraft"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

@@ -4,10 +4,14 @@ import java.util.prefs.Preferences;
 
 import org.jetbrains.annotations.Nullable;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Persistent storage for the application
  */
 public class Database {
+    private Logger logger = LogManager.getLogger(getClass());
     private static Database instance = null;
 
     public static Database getInstance() {
@@ -28,10 +32,28 @@ public class Database {
         // Access the class preferences
         preferences = Preferences.userRoot().node(this.getClass().getName());
 
+        logger.debug("Opened lock on mod preferences");
     }
 
     private String getPrefKeyForServer(String server) {
         return String.format("%s%s", DYNMAP_LINKAGE_PREFIX, server);
+    }
+
+    /**
+     * Sets if waypoint integration should be enabled
+     * 
+     * @param enabled Should be enabled?
+     */
+    public void setEnableIntegration(boolean enabled) {
+        logger.debug(String.format("Waypoint integration set: %b", enabled));
+        preferences.put("integrate_waypoints", (enabled) ? "T" : "F");
+    }
+
+    /**
+     * Gets if waypoint integration should be enabled
+     */
+    public boolean getIntegrationEnabled() {
+        return preferences.get("integrate_waypoints", "F").equals("T");
     }
 
     /**
@@ -61,6 +83,7 @@ public class Database {
      * @param remoteURL Dynmap URL
      */
     public void setDynmapRemoteForServer(String server, String remoteURL) {
+        logger.debug(String.format("Added dynmap to server: %s -> %s", server, remoteURL));
         preferences.put(getPrefKeyForServer(server), remoteURL);
     }
 
@@ -70,6 +93,7 @@ public class Database {
      * @param server Minecraft server
      */
     public void unlinkDynmapRemoteForServer(String server) {
+        logger.debug(String.format("Removed dynmap from server: %s ", server));
         preferences.remove(getPrefKeyForServer(server));
     }
 }
